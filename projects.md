@@ -71,6 +71,17 @@ the need.
 **Lifecycle**: Approaching maturity.  Expect to stabilize and receive long-term
 support.
 
+This provides an HTTP REST API to saved data and a WebSockets API to streaming
+(live) data. It aims to be the canonical way to store and securely access data
+from Bluesky.
+
+The project has more general aims beyond Bluesky: unlike its predecessor
+(Databroker) it is not designed around the Bluesky document model. Instead, it
+addresses data in terms of generic "arrays" and "tables" and nested containers
+thereof. In fact, the word `bluesky` does not appear in the codebase. Thus, it
+is suitable not only for raw data from Bluesky, but for data from other
+acquisition systems, and for processed or analyzed data products as well.
+
 ### Event-model 
 
 **Lifecycle** Stable.
@@ -84,6 +95,17 @@ functions for manipulating documents and building utilities that consume them.
 
 **Lifecycle:** Approaching maturity, undergoing rapid development. Expect to
 stabilize and receive long term support.
+
+This is a collection of utilities that integrate Tiled with Bluesky.
+
+- The `TiledWriter` consumes Bluesky documents and makes HTTP REST calls to
+  save their data and metadata in Tiled.
+- Special client objects provide Bluesky-specific convenience methods and
+  reprs that display useful Bluesky-specific metadata.
+- Custom search queries provide convenient ways to search on standard
+  Bluesky metadata, like `TimeRange` and `ScanID`.
+- An exporter converts back from Tiled's arrays and tables to Bluesky
+  documents, for "replaying" old data as a Bluesky document stream.
 
 ### Area-detector-handlers 
 
