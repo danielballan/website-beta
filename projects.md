@@ -173,7 +173,7 @@ to build applications fit to specific requirements.
 
 ### hklpy 
 
-Maintenance only, no new feature expected to be added. 
+**Lifecycle:** Maintenance only, no new feature expected to be added. 
 
 ### Bluesky-adaptive 
 
