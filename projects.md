@@ -227,7 +227,7 @@ used as a message bus.
 
 ## Notable External Projects
 
-These projects are kept in the Bluesky GitHub organization or covered by
+These projects are not kept in the Bluesky GitHub organization or covered by
 Bluesky Governance, but they may still have some multi-facility adoption
 and may be interesting to Bluesky users.
 
