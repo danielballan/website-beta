@@ -115,7 +115,7 @@ This library provides implementations of the “Handler” interface provided by
 Databroker. It will be deprecated with Databroker, superseded by I/O Adapters
 in Tiled. 
 
-### Spanspec 
+### Scanspec 
 
 **Lifecycle:** Approaching maturity. Expect to stabilize and receive long term support. 
 
