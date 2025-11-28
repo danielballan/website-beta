@@ -173,7 +173,7 @@ to build applications fit to specific requirements.
 
 ### hklpy 
 
-**Lifecycle:** Maintenance only, no new feature expected to be added. 
+**Lifecycle:** Maintenance only, no new feature expected to be added. On path to be archived.
 
 ### Bluesky-adaptive 
 
@@ -231,10 +231,49 @@ These projects are not kept in the Bluesky GitHub organization or covered by
 Bluesky Governance, but they may still have some multi-facility adoption
 and may be interesting to Bluesky users.
 
+### apstools
+
+**Lifecycle:** Stable, open to new features and bug fixes.
+
+[**Source**](https://github.com/BCDA-APS/apstools)
+
+Library of Python tools for use with the Bluesky framework at the APS.  In addition to
+ophyd Device classes for mast of EPICS synApps, there are Devices many hardware devices
+and software constructs used at APS beam lines.  File writers (RunEngine callbacks) can
+write NeXus and SPEC data files.  Used by BITS.
+
+### BITS
+
+**Lifecycle:** Experimental, in use at APS.
+
+[**Source**](https://github.com/BCDA-APS/BITS)
+
+Template for all new deployments of bluesky at APS.
+
+### Guarneri
+
+**Lifecycle:** Experimental, in use at APS.
+
+[**Source**](https://github.com/BCDA-APS/guarneri)
+
+APS package for creating Ophyd and Ophyd-async devices from configuration files.  Used by BITS.
+
 #### happi
 
 ...
 
-### BITS
+### ophyd-registry
 
-...
+**Lifecycle:** Experimental, in use at APS.
+
+[**Source**](https://github.com/BCDA-APS/ophyd-registry)
+
+A run-time registry to keep track of, and retrieve, Ophyd objects.  Used by BITS.
+
+### spec2nexus
+
+**Lifecycle:** Stable, open to new features and bug fixes.
+
+[**Source**](https://github.com/prjemian/spec2nexus)
+
+Library for reading SPEC data files in Python.  Cna also write to NeXus data files.  Use by apstools.
