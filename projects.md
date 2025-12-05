@@ -169,7 +169,7 @@ to build applications fit to specific requirements.
 
 ### hklpy2 
 
-**Lifecycle:** Experimental, in use at APS, under evaluation at NSLS-II. 
+**Lifecycle:** Experimental, undergoing development, in use at APS, under evaluation at NSLS-II. Replaces hklpy package.
 
 ### hklpy 
 
