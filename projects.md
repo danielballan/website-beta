@@ -22,27 +22,6 @@ It is compatible with the devices implemented in Ophyd and Ophyd-Async
 (including a mixture of both simultaneously). It is also compatible with
 third-party libraries that implemented the expected interfaces.
 
-### Ophyd (original)
-
-**Lifecycle:** Stable, open to bug-fixes, unlikely to receive new features.
-Expect long-term support. 
-
-Although Ophyd-Async is receiving most of the new development attention, Ophyd
-is expected to be maintained and supported for the full lifecycle of the
-bluesky project. There are thousands of instances of ophyd devices at multiple
-facilities. It would be require a significant effort to convert these, so
-NSLS-II is committed to continue to maintain Ophyd even if most new deployments
-adopt Ophyd-Async. 
-
-### Ophyd-Async 
-
-**Lifecycle:** Approaching maturity, still undergoing rapid development. Expected
-to stabilize and receive long term support. 
-
-This is a separate re-implementation of Ophyd, with a distinct design that
-incorporates lessons from a decade of running Ophyd and employs Python language
-features that were not available when Ophyd was implemented.
-
 ### Databroker 
 
 **Lifecycle:** Stable, planned for deprecation (see below for timelines). It is
@@ -66,6 +45,34 @@ support the transition from MongoDB-based document storage to PostgreSQL-based
 storage. The Python user interface may be maintained longer still, depending on
 the need. 
 
+### Event-model 
+
+**Lifecycle** Stable.
+
+This defines the schemas of the Bluesky document model. It provides convenience
+functions for manipulating documents and building utilities that consume them. 
+
+### Ophyd (original)
+
+**Lifecycle:** Stable, open to bug-fixes, unlikely to receive new features.
+Expect long-term support. 
+
+Although Ophyd-Async is receiving most of the new development attention, Ophyd
+is expected to be maintained and supported for the full lifecycle of the
+bluesky project. There are thousands of instances of ophyd devices at multiple
+facilities. It would be require a significant effort to convert these, so
+NSLS-II is committed to continue to maintain Ophyd even if most new deployments
+adopt Ophyd-Async. 
+
+### Ophyd-Async 
+
+**Lifecycle:** Approaching maturity, still undergoing rapid development. Expected
+to stabilize and receive long term support. 
+
+This is a separate re-implementation of Ophyd, with a distinct design that
+incorporates lessons from a decade of running Ophyd and employs Python language
+features that were not available when Ophyd was implemented.
+
 ### Tiled 
 
 **Lifecycle**: Approaching maturity.  Expect to stabilize and receive long-term
@@ -82,14 +89,51 @@ thereof. In fact, the word `bluesky` does not appear in the codebase. Thus, it
 is suitable not only for raw data from Bluesky, but for data from other
 acquisition systems, and for processed or analyzed data products as well.
 
-### Event-model 
-
-**Lifecycle** Stable.
-
-This defines the schemas of the Bluesky document model. It provides convenience
-functions for manipulating documents and building utilities that consume them. 
-
 ## Supporting Bluesky Projects
+
+### Area-detector-handlers 
+
+**Lifecycle:** Stable, planned for deprecation.
+
+This library provides implementations of the “Handler” interface provided by
+Databroker. It will be deprecated with Databroker, superseded by I/O Adapters
+in Tiled. 
+
+### Bluesky-adaptive 
+
+**Lifecycle:** The long-term scope of this project has not yet been defined. 
+
+This is an experimental collection of tools designed to support complex
+adaptive plans, including integrating with AI agents.
+
+### Bluesky-kafka 
+
+**Lifecycle:** Deprecated, unsupported. 
+
+This originated at NSLS-II, and NSLS-II is moving away from publishing the
+Bluesky document stream to Kafka. Instead, for most use cases, Tiled Websockets
+will be used for streaming access to Bluesky data. For “edge” use cases, such
+as tight-loop adaptive logic, point-to-point communication (e.g. 0MQ) will be
+used as a message bus. 
+
+### Bluesky-live 
+
+**Lifecycle:** Experimental, on path to be archived. 
+
+Early prototype that informed Tiled design and development. It has significant
+performance issues and functionality gaps.   Not recommended for use. 
+
+The core functionality is a stateful version of the consolidator that is now in
+bluesky-tiled-plugins. Existing usage of bluesky-live should migrate to that
+instead. 
+
+### Bluesky-pods 
+
+**Lifecycle:** Experimental.
+
+The intent is to be able to spin up the entire ecosystem with Podman
+pods/containers. The repo will get more developments efforts from the NSLS-II
+in the future. 
 
 ### Bluesky-tiled-plugins 
 
@@ -107,13 +151,49 @@ This is a collection of utilities that integrate Tiled with Bluesky.
 - An exporter converts back from Tiled's arrays and tables to Bluesky
   documents, for "replaying" old data as a Bluesky document stream.
 
-### Area-detector-handlers 
+### Bluesky-queueserver, bluesky-httpserver, bluesky-queueserver-api 
 
-**Lifecycle:** Stable, planned for deprecation.
+**Lifecycle:** Experimental, under development.
 
-This library provides implementations of the “Handler” interface provided by
-Databroker. It will be deprecated with Databroker, superseded by I/O Adapters
-in Tiled. 
+Refactoring is planned to (i) support websockets for the queue status updates,
+(ii) backend for storing queue state, (iii) integrate the HTTP support into RE
+Manager, and (iv) redesign the structure to make the queue pluggable. 
+
+### Bluesky-widgets 
+
+**Lifecycle:** The future of this project is currently undecided. 
+
+It contains some alpha-quality data visualization and graphical interface
+components supporting Qt and Jupyter widgets. These predate Tiled; they are
+likely to be abandoned or completely refactored to fetch data from the Tiled
+REST and Websocket APIs rather than consuming Bluesky document streams. 
+
+The repository also contains a Qt-based graphical interface to QueueServer.
+This will be maintained, but it may be moved into its own repository. 
+
+Cf. (NSLS-II internal): https://github.com/NSLS2/tiled-qt-tools 
+
+### Finch 
+
+**Lifecycle:** Experimental. Primarily used at ALS for new developments, under
+evaluation at NSLS-II. 
+
+This is a library of React components that integrate with Bluesky services,
+including Queue Server, Tiled, and the nascent ophyd-websocket /
+ophyd-as-a-service. It is expected that facilities will remix these components
+to build applications fit to specific requirements. 
+
+### hklpy 
+
+**Lifecycle:** Maintenance only, no new feature expected to be added. On path to be archived.
+
+### hklpy2 
+
+**Lifecycle:** Experimental, undergoing development, in use at APS, under evaluation at NSLS-II. Replaces hklpy package.
+
+### ophyd-websocket / ophyd-as-a-service 
+
+**Lifecycle:** Experimental, early development 
 
 ### Scanspec 
 
@@ -146,86 +226,6 @@ Note: The package suitcase-mongo is a special case. It does not export files;
 it writes Bluesky documents to MongoDB. It is, in effect, a support library for
 Databroker, and it will follow the lifecycle of Databroker. 
 
-### Bluesky-queueserver, bluesky-httpserver, bluesky-queueserver-api 
-
-**Lifecycle:** Experimental, under development.
-
-Refactoring is planned to (i) support websockets for the queue status updates,
-(ii) backend for storing queue state, (iii) integrate the HTTP support into RE
-Manager, and (iv) redesign the structure to make the queue pluggable. 
-
-### ophyd-websocket / ophyd-as-a-service 
-
-**Lifecycle:** Experimental, early development 
-
-### Finch 
-
-**Lifecycle:** Experimental. Primarily used at ALS for new developments, under
-evaluation at NSLS-II. 
-
-This is a library of React components that integrate with Bluesky services,
-including Queue Server, Tiled, and the nascent ophyd-websocket /
-ophyd-as-a-service. It is expected that facilities will remix these components
-to build applications fit to specific requirements. 
-
-### hklpy2 
-
-**Lifecycle:** Experimental, undergoing development, in use at APS, under evaluation at NSLS-II. Replaces hklpy package.
-
-### hklpy 
-
-**Lifecycle:** Maintenance only, no new feature expected to be added. On path to be archived.
-
-### Bluesky-adaptive 
-
-**Lifecycle:** The long-term scope of this project has not yet been defined. 
-
-This is an experimental collection of tools designed to support complex
-adaptive plans, including integrating with AI agents.
-
-### Bluesky-widgets 
-
-**Lifecycle:** The future of this project is currently undecided. 
-
-It contains some alpha-quality data visualization and graphical interface
-components supporting Qt and Jupyter widgets. These predate Tiled; they are
-likely to be abandoned or completely refactored to fetch data from the Tiled
-REST and Websocket APIs rather than consuming Bluesky document streams. 
-
-The repository also contains a Qt-based graphical interface to QueueServer.
-This will be maintained, but it may be moved into its own repository. 
-
-Cf. (NSLS-II internal): https://github.com/NSLS2/tiled-qt-tools 
-
-### Bluesky-live 
-
-**Lifecycle:** Experimental, on path to be archived. 
-
-Early prototype that informed Tiled design and development. It has significant
-performance issues and functionality gaps.   Not recommended for use. 
-
-The core functionality is a stateful version of the consolidator that is now in
-bluesky-tiled-plugins. Existing usage of bluesky-live should migrate to that
-instead. 
-
-### Bluesky-pods 
-
-**Lifecycle:** Experimental.
-
-The intent is to be able to spin up the entire ecosystem with Podman
-pods/containers. The repo will get more developments efforts from the NSLS-II
-in the future. 
-
-### Bluesky-kafka 
-
-**Lifecycle:** Deprecated, unsupported. 
-
-This originated at NSLS-II, and NSLS-II is moving away from publishing the
-Bluesky document stream to Kafka. Instead, for most use cases, Tiled Websockets
-will be used for streaming access to Bluesky data. For “edge” use cases, such
-as tight-loop adaptive logic, point-to-point communication (e.g. 0MQ) will be
-used as a message bus. 
-
 ## Notable External Projects
 
 These projects are not kept in the Bluesky GitHub organization or covered by
@@ -252,6 +252,7 @@ A similar project to ophyd-websockets. This package creates a REST API and webso
 
 #### HZDR version of this
 
+...
 
 ### Blop
 
@@ -260,6 +261,7 @@ A similar project to ophyd-websockets. This package creates a REST API and webso
 A Python library for performing optimization for beamline experiments. It is designed to integrate nicely with the Bluesky ecosystem and primarily acts as a bridge between optimization routines and fine-grained data acquisition and control. Our goal is to provide a simple and practical data-driven optimization interface for beamline experiments.
 
 [link](https://github.com/NSLS-II/blop)
+
 ### apstools
 
 **Lifecycle:** Stable, open to new features and bug fixes.
@@ -277,6 +279,7 @@ write NeXus and SPEC data files.  Used by BITS.
 In order to create NeXus structures from bluesky runs, it's important to know the NeXus classes of devices. This package uses HAPPI to  add additional metadata to a bluesky start document about the mapping required from devices to their NeXus base class. It includes callbacks to export .nx files from any bluesky run which contain NXcollections of lists of devices with NeXus compliant classes. These are the basis of export to application definitions. 
 
 [link](https://codebase.helmholtz.cloud/hzb/bluesky/core/source/bluesky_nexus)
+
 ### PyMca Tiled Integration
 
 @padraic-shafer 
@@ -324,10 +327,6 @@ Various facilities have common packages with Ophyd devices and plans which are u
 **Lifecycle:** Production use. Migrating towards ophyd async
 
 A collection of Ophyd.v1 devices used in beamlines at BESSY-II [link](https://codebase.helmholtz.cloud/hzb/bluesky/core/source/bessyii_devices)
-
-#### apstools
-
-@prjemian 
 
 ### beamline package
 
