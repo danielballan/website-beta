@@ -241,7 +241,13 @@ Library of Python tools for use with the Bluesky framework at the APS.  In addit
 ophyd Device classes for mast of EPICS synApps, there are Devices many hardware devices
 and software constructs used at APS beam lines.  File writers (RunEngine callbacks) can
 write NeXus and SPEC data files.  Used by BITS.
+#### bluesky_nexus
 
+**Lifecycle:** experimental, in development at a DESY, HZB and NSLS-II
+
+In order to create NeXus structures from bluesky runs, it's important to know the NeXus classes of devices. This package uses HAPPI to  add additional metadata to a bluesky start document about the mapping required from devices to their NeXus base class. It includes callbacks to export .nx files from any bluesky run which contain NXcollections of lists of devices with NeXus compliant classes. These are the basis of export to application definitions. 
+
+[link](https://codebase.helmholtz.cloud/hzb/bluesky/core/source/bluesky_nexus)
 ### BITS
 
 **Lifecycle:** Experimental, in use at APS.
