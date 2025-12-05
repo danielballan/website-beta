@@ -36,7 +36,7 @@ adopt Ophyd-Async.
 
 ### Ophyd-Async 
 
-**Lifecycle:** Approaching maturity, still undergoing rapid development, Expect
+**Lifecycle:** Approaching maturity, still undergoing rapid development. Expected
 to stabilize and receive long term support. 
 
 This is a separate re-implementation of Ophyd, with a distinct design that
