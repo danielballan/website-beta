@@ -231,6 +231,28 @@ used as a message bus.
 These projects are not kept in the Bluesky GitHub organization or covered by
 Bluesky Governance, but they may still have some multi-facility adoption
 and may be interesting to Bluesky users.
+
+### Ophyd as a Service implementation
+
+#### bec device server
+
+**Lifecycle:** In active development and in production use at PSI
+
+BEC, a package developed at PSI, uses Ophyd to create device objects on a device server. Redis is used as a message broker and clients to the device server can instantiate multiple instances of the Ophyd objects which have RPC access. Control and monitoring is also possible remotely through a websockets/REST API
+
+[link](https://gitea.psi.ch/bec/bec/src/branch/main/bec_server)
+
+#### as-ophyd-api
+
+**Lifecycle:** In production use at ANSTO
+
+A similar project to ophyd-websockets. This package creates a REST API and websocket interface to ophyd objects. The primary focus being to give REACT clients the ability to make widgets for device monitoring and control.
+
+[link](https://github.com/AustralianSynchrotron/as-ophyd-api)
+
+#### HZDR version of this
+
+
 ### Blop
 
 **Lifecycle:** experimental, in active development
