@@ -248,7 +248,76 @@ write NeXus and SPEC data files.  Used by BITS.
 In order to create NeXus structures from bluesky runs, it's important to know the NeXus classes of devices. This package uses HAPPI to  add additional metadata to a bluesky start document about the mapping required from devices to their NeXus base class. It includes callbacks to export .nx files from any bluesky run which contain NXcollections of lists of devices with NeXus compliant classes. These are the basis of export to application definitions. 
 
 [link](https://codebase.helmholtz.cloud/hzb/bluesky/core/source/bluesky_nexus)
-### BITS
+### PyMca Tiled Integration
+
+@padraic-shafer 
+
+### bluesky_hooks
+
+**Lifecycle**: experimental
+
+This package creates a convenient way of defining plans that should be run when either 1) a particular motor is moved or 2) a particular device is read. In Bliss, Sardana and Spec these are known as `hooks`. Useful if you need to perform a reference measurement every time you use a detector, or move some motor every time in relation to another.
+
+[link](https://codebase.helmholtz.cloud/hzb/bluesky/core/source/bluesky_hooks)
+
+### command line utlity from SIRIUS that interacts with qserver api
+
+I am not sure if there is a public repo of this
+
+### Nomad Camels
+
+**Lifecycle:** in active development, used by multiple smaller laboratory setups
+
+CAMELS provides a graphical user interface (GUI) that can be used to setup instrument control and measurement protocols. The GUI then generates Python code that interfaces with [bluesky](https://blueskyproject.io/) to communicate with the instruments and orchestrate the measurement. CAMELS can also be used to communicate with large-scale, distributed systems implemented with [EPICS](https://epics-controls.org/).
+
+[link](https://fau-lap.github.io/NOMAD-CAMELS/index.html)
+
+### Collections of devices or plans
+
+Various facilities have common packages with Ophyd devices and plans which are used at multiple beamlines. These are often useful resources to look for existing device or plan implementations.
+
+#### pcdsdevices
+
+[link](https://github.com/pcdshub/pcdsdevices)
+@tangkong 
+
+#### nslsii
+
+[link](https://github.com/NSLS-II/nslsii)
+@tacaswell 
+
+#### Diamond Light Source
+
+@coretl 
+
+#### bessyii_devices
+
+**Lifecycle:** Production use. Migrating towards ophyd async
+
+A collection of Ophyd.v1 devices used in beamlines at BESSY-II [link](https://codebase.helmholtz.cloud/hzb/bluesky/core/source/bessyii_devices)
+
+#### apstools
+
+@prjemian 
+
+### beamline package
+
+Various facilities have found it useful to define the collection of plans and device definitions for a beamline or hutch in a package which can be built and tested seperately. There are different implementations at different facilities. 
+
+
+#### beamlinetools
+
+**Lifecycle**: in production use at BESSY-II
+
+This package template defines the structure of all bluesky deployments at BESSY-II. There are defined locations for device and plan definition and instantiation. Used in both IPython and Queueserver applications. Lacking tests.
+
+[link](https://codebase.helmholtz.cloud/hzb/bluesky/beamlines_endstations/vanilla_beamline/source/beamlinetools)
+
+#### APS
+
+@prjemian 
+
+#### BITS
 
 **Lifecycle:** Experimental, in use at APS.
 
