@@ -363,7 +363,13 @@ APS package for creating Ophyd and Ophyd-async devices from configuration files.
 
 #### happi
 
-...
+**Lifecycle:** Mature, Long-term support
+
+Originating at LCLS, "happi" is a tool that establishes a single interface for storing device metadata, searching that metadata, and creating ophyd device instances using that metadata.  "happi" features a flexible container system that allows for the definition and enforcement of a variety of metadata schema.
+
+While primarily used for ophyd devices, happi can be used to instantiate any python class.
+
+Other centers have similar tools, but happi is the most widely used.
 
 ### ophyd-registry
 
