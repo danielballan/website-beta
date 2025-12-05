@@ -47,7 +47,7 @@ the need.
 
 ### Event-model 
 
-**Lifecycle** Stable.
+**Lifecycle** Stable, long-term support.
 
 This defines the schemas of the Bluesky document model. It provides convenience
 functions for manipulating documents and building utilities that consume them. 
@@ -70,8 +70,9 @@ adopt Ophyd-Async.
 to stabilize and receive long term support. 
 
 This is a separate re-implementation of Ophyd, with a distinct design that
-incorporates lessons from a decade of running Ophyd and employs Python language
-features that were not available when Ophyd was implemented.
+incorporates lessons from a decade of running Ophyd. It employs Python language
+features (e.g. type annotations) and an async Channel Access I/O library that
+were not available when Ophyd was implemented.
 
 ### Tiled 
 
