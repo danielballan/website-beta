@@ -118,7 +118,8 @@ in Tiled.
 ### Scanspec 
 
 **Lifecycle:** Approaching maturity. Expect to stabilize and receive long term support. 
-
+Allows scan paths to be specified in a serializable, efficient and Pythonic way.
+This is used by ophyd-async to enable flyscanning.
 ### Databroker-pack 
 
 **Lifecycle:** Experimental, deprecated, not recommended for use.
