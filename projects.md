@@ -231,7 +231,13 @@ used as a message bus.
 These projects are not kept in the Bluesky GitHub organization or covered by
 Bluesky Governance, but they may still have some multi-facility adoption
 and may be interesting to Bluesky users.
+### Blop
 
+**Lifecycle:** experimental, in active development
+
+A Python library for performing optimization for beamline experiments. It is designed to integrate nicely with the Bluesky ecosystem and primarily acts as a bridge between optimization routines and fine-grained data acquisition and control. Our goal is to provide a simple and practical data-driven optimization interface for beamline experiments.
+
+[link](https://github.com/NSLS-II/blop)
 ### apstools
 
 **Lifecycle:** Stable, open to new features and bug fixes.
